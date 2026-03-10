@@ -32,8 +32,11 @@ CODESPACE_NAME = os.environ.get('CODESPACE_NAME', '')
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    f'{CODESPACE_NAME}-8000.app.github.dev' if CODESPACE_NAME else '*',
 ]
+if CODESPACE_NAME:
+    ALLOWED_HOSTS.append(f'{CODESPACE_NAME}-8000.app.github.dev')
+else:
+    ALLOWED_HOSTS.append('*')
 
 
 # Application definition
